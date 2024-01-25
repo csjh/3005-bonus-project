@@ -107,15 +107,15 @@ class Executor:
         right = Executor.execute(self.ast[3], self.relations)
         columns = self.ast[4] or [[x, x] for x in left.columns & right.columns]
 
-        right_columns = right.columns - left.columns
-        left_columns = left.columns - right.columns
         left_rows, right_rows = self.get_inner_rows(left, right, columns)
 
         base = Relation(r | l for l, r in zip(left_rows, right_rows))
 
         if isleft:
+            right_columns = right.columns - left.columns
             base |= Relation(l | Row({(key, None) for key in right_columns}) for l in left if l not in left_rows)
         if isright:
+            left_columns = left.columns - right.columns
             base |= Relation(r | Row({(key, None) for key in left_columns}) for r in right if r not in right_rows)
         
         return base
