@@ -118,17 +118,6 @@ class Parser:
             if self.tokens[self.index][1] == ',':
                 self.index += 1
         return columns
-
-    def read_pi_columns(self):
-        columns = []
-        while self.tokens[self.index][1] != '}':
-            if self.tokens[self.index][0] != TokenType.IDENTIFIER:
-                raise Exception(f'Expected identifier got {self.tokens[self.index][1]}')
-            columns.append(self.tokens[self.index][1])
-            self.index += 1
-            if self.tokens[self.index][1] == ',':
-                self.index += 1
-        return columns
     
     def read_predicate(self):
         left, operator, right = None, None, None
