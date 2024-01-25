@@ -1,0 +1,44 @@
+Employees (EID, Name, Age) = {
+    E1, John, 32
+    E2, Alice, 28
+    E3, Bob, 29
+}
+
+Salaries (EID, Name, Salary) = {
+    E1, John, 120000
+    E2, Alice, 80000
+    E3, Bobby, 150000
+}
+
+SlideEmployee (id, name, email, Dept) = {
+    1, Alex, aatc, Sales
+    2, John, jatc, Finance
+    3, Mo, matc, HR
+}
+
+SlideDepartment (name, budget) = {
+    Finance, 20000
+    Sales, 30000
+    IT, 40000
+}
+
+AssignmentEmployees (EmpID, Name, Position, Salary, DeptID) = {
+    101, Alice, Manager, 3000, D01
+    102, Bob, Manager, 4500, D02
+    103, Charlie, Developer, 4000, D01
+    104, David, Developer, 3800, D03
+    105, Emily, Manager, 2900, D03
+}
+
+AssignmentDepartments (DeptID, DeptName, ManagerID) = {
+    D01, IT, 101
+    D02, Finance, 102
+    D03, Marketing, 105
+}
+
+AssignmentProjects (ProjectID, ProjectName, LeadEmpID, Budget) = {
+    P01, Alpha, 101, 500000
+    P02, Beta, 103, 2000000
+    P03, Gamma, 102, 750000
+    P04, Delta, 104, 1250000
+}

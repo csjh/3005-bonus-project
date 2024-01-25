@@ -1,0 +1,18 @@
+π{EID} 𝞂{Age≥29} (Employees)
+Employees
+Employees ⨝ Salaries
+Employees ⨝{EID=EID} Salaries
+Employees ⟗{EID=EID,Name=Name} Salaries
+SlideEmployee ⨝{Dept=name} SlideDepartment
+SlideEmployee ⟕{Dept=name} SlideDepartment
+SlideEmployee ⟖{Dept=name} SlideDepartment
+SlideEmployee ⟗{Dept=name} SlideDepartment
+(SlideEmployee ⨉ SlideDepartment) / SlideDepartment
+𝞂{Salary>3000} AssignmentEmployees
+π{Position} 𝞂{Name="David"} AssignmentEmployees
+π{Name} 𝞂{DeptName="IT"} (AssignmentDepartments ⨝{ManagerID=EmpID} AssignmentEmployees)
+π{DeptID,DeptName,ManagerID,Budget} 𝞂{Budget>1000000} (AssignmentDepartments ⨝ (AssignmentEmployees ⨝{EmpID=LeadEmpID} AssignmentProjects))
+π{ProjectName} 𝞂{DeptName="Finance"} (AssignmentDepartments ⨝ (AssignmentEmployees ⨝{EmpID=LeadEmpID} AssignmentProjects))
+π{Name,ProjectName} (AssignmentProjects ⨝{LeadEmpID=EmpID} AssignmentEmployees)
+π{Name,ProjectName} (AssignmentProjects ⟖{LeadEmpID=EmpID} AssignmentEmployees)
+π{Name,EmpID} AssignmentEmployees ⨝ ((π{EmpID} AssignmentEmployees) - π{EmpID} (AssignmentEmployees ⨝{EmpID=ManagerID} AssignmentDepartments))
